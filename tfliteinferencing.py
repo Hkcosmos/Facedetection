@@ -2,22 +2,8 @@ import tensorflow as tf
 import cv2
 import numpy as np
 import time
-# Load the Keras model
-model = tf.keras.models.load_model('C:\\Users\\SM Harikarthik\\Documents\\FaceDetection\\facetracker.h5')
 
-# Convert the model to TFLite format
-converter = tf.lite.TFLiteConverter.from_keras_model(model)
-tflite_model = converter.convert()
-
-with open('face_detection_model.tflite', 'wb') as f:
-    f.write(tflite_model)
-
-import tensorflow as tf
-import numpy as np
-import cv2
-
-# Load the TFLite model
-interpreter = tf.lite.Interpreter(model_path='face_detection_model.tflite')
+interpreter = tf.lite.Interpreter(model_path='converted_modelvgg16.tflite')
 interpreter.allocate_tensors()
 
 # Get input and output tensors
